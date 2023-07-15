@@ -20,9 +20,7 @@ jobs:
       - name: Display Python version
         run: |
           echo "Output for Python ${{ matrix.python-version }}:"
-          python -c "import sys; print(sys.version)"
-          echo "" > output.txt  # 출력 결과를 저장하기 위한 빈 줄 추가
-          python -c "import sys; print(sys.version)" >> output.txt  # 출력 결과를 output.txt에 이어붙임
+          python -c "import sys; print(sys.version)" >> output.txt
         
       - name: Upload artifact
         uses: actions/upload-artifact@v3
