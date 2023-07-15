@@ -20,6 +20,8 @@ jobs:
       - name: Display Python version
         run: |
           echo "Output for Python ${{ matrix.python-version }}:"
+          python -c "import sys; print(sys.version)"
+          echo "" >> output.txt
           python -c "import sys; print(sys.version)" >> output.txt
         
       - name: Upload artifact
