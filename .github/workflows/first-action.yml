@@ -1,4 +1,4 @@
-name: Python
+name: first-action
 
 on: workflow_dispatch
 
@@ -16,12 +16,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          
       - name: Display Python version
-        run: python -c "import sys; print(sys.version)" > output.txt
-        
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        run: |
+          python -c "import sys; print(sys.version)" > python_version.txt
+          cat python_version.txt
+      - name: Upload Python version artifact
+        uses: actions/upload-artifact@v2
         with:
-          name: python-outputs
-          path: output.txt
+          name: python-version-${{ matrix.python-version }}
+          path: python_version.txt
